@@ -30,15 +30,4 @@ fun main(args: Array<String>) {
     for (row in matrix) {
         println(row.contentToString())
     }
-
-    while(true){
-        if(true){
-            println("break")
-            break
-        }
-
-        println("outside if")
-    }
-
-    println("outside while")
 }

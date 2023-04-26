@@ -50,4 +50,5 @@ private fun getLenght(i: Int, j: Int, word: String): Int {
 
 fun main() {
     println("Result: ${longestPalindrome("Geeks")}")
+    println("Result: ${longestPalindrome("forgeeksskeegfor")}")
 }
