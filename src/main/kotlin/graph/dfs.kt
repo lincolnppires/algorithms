@@ -1,11 +1,8 @@
 package graph
 
-import java.util.LinkedList
-import java.util.Queue
+// https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/
 
-//https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/
-
-class Graph(nodeNumber: Int) {
+class GraphDFS(nodeNumber: Int) {
     private val adjacentNodes = Array(nodeNumber) { mutableListOf<Int>() }
 
     fun addEdge(node: Int, child: Int) {
@@ -13,24 +10,23 @@ class Graph(nodeNumber: Int) {
     }
 
     fun bfs(node: Int) {
-        var visited = BooleanArray(adjacentNodes.size)
-        var queue: Queue<Int> = LinkedList<Int>()
+        val visited = BooleanArray(adjacentNodes.size)
         var node = node
 
-        visited[node] = true
-        queue.add(node)
+        DFSUtil(node, visited)
+    }
 
-        while (queue.size != 0) {
-            node = queue.poll()
-            println("Visiting $node ")
-            adjacentNodes[node].forEach {
-                if (visited[it].not()) {
-                    visited[it] = true
-                    queue.add(it)
-                }
+    private fun DFSUtil(node: Int, visited: BooleanArray) {
+        visited[node] = true
+        println("Visiting $node")
+        adjacentNodes[node].forEach {
+            var next = it
+            if (visited[next].not()) {
+                DFSUtil(next, visited)
             }
         }
     }
+
     fun printGraph() {
         for (i in 0 until adjacentNodes.size) {
             var node = i
@@ -44,8 +40,8 @@ class Graph(nodeNumber: Int) {
 }
 
 fun main() {
-    println("BFS")
-    var graph = Graph(4)
+    println("DFS")
+    var graph = GraphDFS(4)
     graph.addEdge(0, 1)
     graph.addEdge(0, 2)
     graph.addEdge(1, 2)

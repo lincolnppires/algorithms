@@ -30,4 +30,27 @@ fun main(args: Array<String>) {
     for (row in matrix) {
         println(row.contentToString())
     }
+    println()
+    val graph: Array<MutableList<Int>> = arrayOf(
+        mutableListOf(1, 2, 3),
+        mutableListOf(4, 5),
+        mutableListOf(6),
+    )
+    for (i in 0 until graph.size) {
+        print("$i -> ")
+        graph[i].forEach {
+            print("|$it")
+        }
+        println()
+    }
+
+    println()
+    val graphChar: Array<MutableList<Char>> = arrayOf(
+        mutableListOf('A', 'B', 'C'),
+        mutableListOf('D', 'E'),
+        mutableListOf('F'),
+    )
+    println(graphChar[0])
+    println(graphChar[1])
+    println(graphChar[2])
 }
